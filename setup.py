@@ -21,6 +21,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "phase-dev>=2.1.0",
+        "python-dotenv>=1.0.1",
     ],
     classifiers=[
         "Development Status :: 5 - Production/Stable",

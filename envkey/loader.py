@@ -1,9 +1,11 @@
 import os
 import sys
+from dotenv import load_dotenv
 from phase import GetAllSecretsOptions, Phase
 from .fetch import fetch_env
 
 def load(is_init=False, cache_enabled=None, dot_env_path=None):
+    load_dotenv()
     phase_token = os.environ.get('PHASE_SERVICE_TOKEN', "")
     if phase_token:
         print("Loading envvars from phase")
