@@ -1,12 +1,12 @@
 import os
 import sys
-from dotenv import load_dotenv
+from dotenv import dotenv_values
 from phase import GetAllSecretsOptions, Phase
 from .fetch import fetch_env
 
 def load(is_init=False, cache_enabled=None, dot_env_path=None):
-    load_dotenv()
-    phase_token = os.environ.get('PHASE_SERVICE_TOKEN', "")
+    _env = dotenv_values()
+    phase_token = _env.get('PHASE_SERVICE_TOKEN', "")
     if phase_token:
         print("Loading envvars from phase")
         return _load_from_phase()
@@ -36,10 +36,7 @@ def to_env(s):
 
 
 def _config():
-    cfg = {}
-    cfg["PHASE_SERVICE_TOKEN"] = os.environ.get("PHASE_SERVICE_TOKEN", False)
-    cfg["PHASE_PROJECT"] = os.environ.get("PHASE_PROJECT", False)
-    cfg["ENVKEY"] = os.environ.get("ENVKEY", False)
+    cfg = dotenv_values()
     return cfg
 
 
